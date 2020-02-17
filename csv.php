@@ -28,18 +28,43 @@ $stmt = (new Statement());
 
 
 
-if(isset($_POST["AddFilter"])){
- $filters = $_POST["AddFilter"];
+if(isset($_POST["AddColumns"])){
+ $columns = $_POST["AddColumns"];
 }
 
-if(isset($_POST["AddFilter"])){
-    foreach($filters as $filter){
-       $arraybefore[$filter] = $filter;
+if(!empty($_POST["UserID"])){
+    $userId = $_POST["UserID"];
+
+    $tempArray = $records;
+    $records = [];
+    foreach ($tempArray as $record) 
+    {
+        if(strtolower($record['USER ID']) == strtolower($userId)){
+            array_push($records,$record);
+        }
     }
 }
-    $array = [$arraybefore];
+
+if($_POST["Status"]!="SELECTSTATUS"){
+    $stats = $_POST["Status"];
+
+    $tempArray = $records;
+    $records = [];
+    foreach ($tempArray as $record) 
+    {
+        if(strtolower($record['STATUS']) == strtolower($stats)){
+            array_push($records,$record);
+        }
+    }
+}
 
 
+if(isset($_POST["AddColumns"])){
+    foreach($columns as $column){
+       $arraybefore[$column] = $column;
+    }
+}
+$array = [$arraybefore];
 
 foreach ($records as $record) {
     $filteredRecord['USER ID'] = $record['USER ID'];
@@ -48,9 +73,9 @@ foreach ($records as $record) {
     $filteredRecord['CONTENT TITLE'] = $record['CONTENT TITLE'];
 
     
-    if(isset($_POST["AddFilter"])){
-        foreach($_POST["AddFilter"] as $filter){
-            $filteredRecord[$filter] = $record[$filter];
+    if(isset($_POST["AddColumns"])){
+        foreach($_POST["AddColumns"] as $column){
+            $filteredRecord[$column] = $record[$column];
         }   
     }
 

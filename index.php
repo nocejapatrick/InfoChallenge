@@ -31,6 +31,7 @@
 
         <form action="csv.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
+                <h2>Add Filters</h2>
                 <div class="d-flex">
                     <div class="box">
                         <label for="USERID">User ID</label>
@@ -59,22 +60,22 @@
             <div class="form-group">
                 <label for="USERID">Status</label>
                 <select name="Status" class="form-control">
-                    <option>Select Status</option>
+                    <option value="SELECTSTATUS">Select Status</option>
                     <option value="STARTED">STARTED</option>
                     <option value="COMPLETED">COMPLETED</option>
                 </select>
             </div>
-
+            <h2>Add Columns To Your Datas</h2>
             <div class="form-group">
-                <input type="checkbox" name="AddFilter[]" value="STATUS" >
+                <input type="checkbox" name="AddColumns[]" value="STATUS" >
                 <label for="vehicle1">Status</label><br>
 
 
-                <input type="checkbox" name="AddFilter[]" value="COMPLETED DATE">
+                <input type="checkbox" name="AddColumns[]" value="COMPLETED DATE">
                 <label for="vehicle1">Completed Date</label><br>
             </div>
 
-                
+            <h2>Upload CSV Here</h2>
                 <input type="hidden" name="sample" value="sample">
                 <input type="file" name="file">
                 <button type="submit" value="submit">Submit</button>
